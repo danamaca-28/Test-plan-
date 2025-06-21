@@ -1,0 +1,68 @@
+✅Plan de testare – API BookStore (DemoQA)
+
+📅 2. Data:
+2025-06-21
+
+👤 3. Responsabil:
+Maca Dana 
+
+🎯 4. Scopul testării:
+Verificarea funcționalității, stabilității și consistenței răspunsurilor API-ului BookStore, inclusiv:
+
+Creare cont (User creation)
+
+Autentificare (Token generation)
+
+Adăugare carte
+
+Ștergere carte
+
+Preluare listă cărți
+
+📦 5. Endpoints de testat:
+Nr.	Endpoint	Metodă	Descriere
+1	/Account/v1/User	POST	Creează un utilizator nou
+2	/Account/v1/GenerateToken	POST	Generează token JWT
+3	/BookStore/v1/Books	GET	Preia lista completă de cărți
+4	/BookStore/v1/Books	POST	Adaugă o carte în profilul utilizator
+5	/BookStore/v1/Book	DELETE	Șterge o carte din profil
+
+🔍 6. Tipuri de testare:
+✅ Testare pozitivă – input corect, date valide
+
+❌ Testare negativă – input greșit, lipsă token, formate invalide
+
+🔒 Testare autentificare/autorizare – token invalid, lipsă header
+
+🐢 Testare performanță (basic) – timp de răspuns
+
+💾 Testare persistenta datelor – adaugă, verifică, apoi șterge
+
+✅ 7. Cazuri de test (exemple):
+TC ID	Endpoint	Tip test	Descriere	Input	Așteptat
+TC01	/Account/v1/User	Pozitiv	Creare utilizator valid	username+parolă	201 Created
+TC02	/Account/v1/User	Negativ	Username existent	username duplicat	406
+TC03	/Account/v1/GenerateToken	Pozitiv	Token valid	username/parolă	200 + token
+TC04	/BookStore/v1/Books	GET	Acces public	-	200 + listă JSON
+TC05	/BookStore/v1/Books	POST	Autorizare	fără token	401 Unauthorized
+TC06	/BookStore/v1/Books	POST	Pozitiv	token + payload carte	201 sau 200
+TC07	/BookStore/v1/Book	DELETE	Pozitiv	carte existentă + token	204 No Content
+
+⚙️ 8. Instrumente folosite:
+Postman / Insomnia – pentru execuție manuală
+
+
+📌 9. Criterii de intrare:
+API este funcțional și accesibil
+
+Documentația API este disponibilă-Swagger
+
+Token valid pentru testare
+
+🏁 10. Criterii de ieșire:
+Toate cazurile critice sunt acoperite
+
+Toate bug-urile majore sunt raportate
+
+Răspunsurile sunt conforme cu specificațiile API
+
